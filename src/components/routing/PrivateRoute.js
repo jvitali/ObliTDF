@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getLoggedUser } from "../../state/actions/authActions";
+//import { getLoggedUser } from "../../state/actions/authActions";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const dispatch = useDispatch();

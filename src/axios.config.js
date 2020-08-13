@@ -7,6 +7,7 @@ const ortInstance = axios.create({
 });
 
 ortInstance.interceptors.request.use((config) => {
+  // TODO la apikey la saco del localstorage. Que hice set de localstorage al tener el login success
   const apiKey = "9f6f6a2b2748bf24821914720b1152a9";
   if (apiKey !== undefined) config.headers["apikey"] = apiKey;
   return config;
