@@ -15,18 +15,17 @@ export function login(values) {
     });
     try {
       const { data } = await authentication.getAuthentication(values);
+      // TODO guardar la api que te devuelve el llamado de login
       const auth = { token: data.accessToken, email: values.email };
+      // TODO guardar api key
       localStorage.setItem("auth", JSON.stringify(auth));
       dispatch({ type: LOGIN_SUCCESS, payload: data });
     } catch ({ error, response }) {
-      // timeout added to delay api call - and showcase loader
-      setTimeout(() => {
-        dispatch({
-          type: AUTH_LOADING,
-          payload: false,
-        });
-        dispatch({ type: SHOW_NOTIFICATION, payload: response.data });
-      }, 2000);
+      dispatch({
+        type: AUTH_LOADING,
+        payload: false,
+      });
+      dispatch({ type: SHOW_NOTIFICATION, payload: response.data });
     }
   };
 }

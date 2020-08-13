@@ -1,9 +1,8 @@
 import axios from "axios";
-// TODO
-import { ORT_API } from "./config";
+import { ORT_API_URL } from "./config";
 
 const ortInstance = axios.create({
-  baseURL: ORT_API,
+  baseURL: ORT_API_URL,
   timeout: 120000,
 });
 

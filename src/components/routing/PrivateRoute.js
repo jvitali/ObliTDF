@@ -10,10 +10,14 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     isAuthenticated: state.authentication.isAuthenticated,
   }));
 
+  // component did mount
   useEffect(() => {
     if (isAuthenticated) {
+      // TODO
+      // obtener la api key
       const auth = JSON.parse(localStorage.getItem("auth"));
-      dispatch(getLoggedUser(auth.email));
+      // TODO borrar? necesito el nombre del usuario o su mail ?
+      //dispatch(getLoggedUser(auth.email));
     }
     // eslint-disable-next-line
   }, []);

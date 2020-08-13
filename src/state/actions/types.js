@@ -16,3 +16,6 @@ export const HIDE_LOADER = "HIDE_LOADER";
 
 // RUBROS
 export const GET_RUBROS = "GET_RUBROS";
+
+// GASTOS
+export const ALTA_GASTOS = "ALTA_GASTOS";

@@ -4,7 +4,7 @@ const initialState = {
   rubros: null,
 };
 
-export default function notificationReducer(state = initialState, action) {
+export default function rubrosReducer(state = initialState, action) {
   switch (action.type) {
     case GET_RUBROS:
       return {

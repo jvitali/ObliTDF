@@ -2,11 +2,13 @@ import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import notificationReducer from "./notificationReducer";
 import rubrosReducer from "./rubrosReducer";
+import gastosReducer from "./gastosReducer";
 
 const reducers = combineReducers({
   authentication: authReducer,
   notifications: notificationReducer,
   rubros: rubrosReducer,
+  gastos: gastosReducer,
 });
 
 const rootReducer = (state, action) => {

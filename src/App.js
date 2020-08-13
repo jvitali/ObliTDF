@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import Layout from "./layout/Layout";
 import Login from "./pages/Login";
-import AltaGasto from "./pages/AltaGasto";
 import ListaGasto from "./pages/ListaGasto";
 import Notification from "./components/notifications/Notification";
 
@@ -35,8 +34,8 @@ function App() {
         <CssBaseline />
         <BrowserRouter>
           <Switch>
+            {/* TODO sobreescribir todas las rutas con PrivatRoute ya que necesitan autenticacion */}
             <Route path="/login" component={Login} />
-            <Route path="/alta-gastos" component={AltaGasto} />
             <Route path="/lista-gastos" component={ListaGasto} />
             <PrivateRoute path="/" component={Layout} />
           </Switch>

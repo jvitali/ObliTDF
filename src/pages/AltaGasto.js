@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   InputLabel,
@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { getRubros } from "../state/actions/rubrosActions";
+import { darAltaGasto } from "../state/actions/gastosActions";
 
 const useStyles = makeStyles((theme) => ({
   spacing: {
@@ -22,7 +23,15 @@ export default function AltaGasto() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  const [altaGastoData, setAltaGastoData] = useState({
+    nombre: "",
+    rubro: "",
+    monto: "",
+  });
+
+  // componentDidMount (lifecyle hook)
   useEffect(() => {
+    // dipatch de una accion
     dispatch(getRubros());
   }, [dispatch]);
 
@@ -31,18 +40,29 @@ export default function AltaGasto() {
   const handleChange = (e) => {
     // el valor se tiene que guardar en un estado local y eso lo vas a utilizar para hacer un dispatch de una accion que se va a llamar darAltaGastos
     console.log(e.target.value);
+    setAltaGastoData({ ...altaGastoData, rubro: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // hacer un dispatch de una accion que se va a llamar por ejemplo darAltaGasto
+    // en darAltaGasto pasar lo que tengas en el estado
+    dispatch(darAltaGasto(altaGastoData));
   };
 
   return (
-    <div>
+    <>
       <Typography variant="h5">Alta de Gastos</Typography>
-      <form>
+      <form onSubmit={handleSubmit}>
         <FormControl fullWidth className={classes.spacing}>
           <TextField
             id="nombre"
             type="text"
             label="Nombre"
             variant="outlined"
+            onChange={(e) =>
+              setAltaGastoData({ ...altaGastoData, nombre: e.target.value })
+            }
           />
         </FormControl>
         <FormControl variant="outlined" fullWidth className={classes.spacing}>
@@ -82,6 +102,6 @@ export default function AltaGasto() {
           Aceptar
         </Button>
       </form>
-    </div>
+    </>
   );
 }
