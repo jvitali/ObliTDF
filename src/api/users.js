@@ -1,5 +1,5 @@
-import { localInstance } from "../axios.config";
+import { ortInstance } from "../axios.config";
 
 export async function getUser(email) {
-  return await localInstance.get(`users/?email=${email}`);
+  return await ortInstance.get(`users/?email=${email}`);
 }

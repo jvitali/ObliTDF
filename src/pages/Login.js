@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -28,10 +28,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
+
+  const [loginData, setLoginData] = useState({ usuario: "", password: "" });
+
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
-    dispatch(login(values));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login(loginData));
   };
 
   const { isLoading, isAuthenticated } = useSelector(
@@ -48,14 +52,17 @@ export default function Login() {
         <Typography component="h1" variant="h6" gutterBottom>
           Iniciar sesión
         </Typography>
-        <form>
+        <form onSubmit={handleSubmit}>
           <Box pb={4}>
             <TextField
-              id="email"
-              type="email"
-              label="Correo electrónico"
+              id="usuario"
+              type="text"
+              label="Usuario "
               variant="outlined"
               fullWidth
+              onChange={(e) =>
+                setLoginData({ ...loginData, usuario: e.target.value })
+              }
             />
           </Box>
           <Box>
@@ -65,6 +72,9 @@ export default function Login() {
               label="Contraseña"
               variant="outlined"
               fullWidth
+              onChange={(e) =>
+                setLoginData({ ...loginData, password: e.target.value })
+              }
             />
           </Box>
           <Button
@@ -74,7 +84,6 @@ export default function Login() {
             type="submit"
             fullWidth
             size="large"
-            data-cy="submit"
           >
             {isLoading ? <Loader isLoading={true} /> : "Aceptar"}
           </Button>

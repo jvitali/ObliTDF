@@ -13,3 +13,6 @@ export const HIDE_NOTIFICATION = "HIDE_NOTIFICATION";
 // LOADER
 export const SHOW_LOADER = "SHOW_LOADER";
 export const HIDE_LOADER = "HIDE_LOADER";
+
+// RUBROS
+export const GET_RUBROS = "GET_RUBROS";
