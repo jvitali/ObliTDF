@@ -19,3 +19,5 @@ export const GET_RUBROS = "GET_RUBROS";
 
 // GASTOS
 export const ALTA_GASTOS = "ALTA_GASTOS";
+export const GET_GASTOS = "GET_GASTOS";
+export const DELETE_GASTOS = "DELETE_GASTOS";
